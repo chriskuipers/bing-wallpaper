@@ -18,21 +18,28 @@
 
 
 # If an error occurs, give up and terminate.
-set -e
+#set -e
 
 SCRIPT_DIR="$(dirname ${BASH_SOURCE[0]})"
 BING_SCRIPT="${SCRIPT_DIR}/../bing-wallpaper.sh"
 
-echo 'Running the bing-wallpaper script and loading settings.'
+printf "Running the bing-wallpaper script and loading settings.\n\n"
 # NOTE: $PICTURE_DIR and $filename is sourced from bing-wallpaper.sh
 source ${BING_SCRIPT}
 
-echo 'Removing today.jpg and random.jpg to ensure no symlink error occurs.'
-rm "${PICTURE_DIR}/today.jpg" "${PICTURE_DIR}/random.jpg"
+printf "Ensuring there are no symlink errors.\n"
+printf "Removing: ${PICTURE_DIR}today.jpg\n"
+printf "Removing: ${PICTURE_DIR}random.jpg\n\n"
+rm "${PICTURE_DIR}today.jpg" "${PICTURE_DIR}random.jpg"
 
-echo "Linking today's Bing wallpaper to today.jpg."
-ln -s -f "${PICTURE_DIR}/${filename}" "${PICTURE_DIR}/today.jpg"
+printf "Linking today's Bing wallpaper."
+printf "Picture: ${PICTURE_DIR}${filename}\n"
+printf "Ln link: ${PICTURE_DIR}today.jpg.\n\n"
+ln -s -f "${PICTURE_DIR}${filename}" "${PICTURE_DIR}today.jpg"
 
 echo 'Randomly selecting a picture and linking it to random.jpg'
-ln -s -f $(ls ${PICTURE_DIR}/*_*.jpg | grep -v ${filename} | shuf -n 1) \
-  "${PICTURE_DIR}/random.jpg"
+RANDOM_PICTURE=$(ls ${PICTURE_DIR}*_*.jpg | grep -v ${filename} | shuf -n 1)
+printf "Random: $RANDOM_PICTURE\n"
+printf "Link to: ${PICTURE_DIR}random.jpg\n\n"
+ln -s -f $RANDOM_PICTURE "${PICTURE_DIR}random.jpg"
+printf "Succes!\n"

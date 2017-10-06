@@ -33,6 +33,7 @@ print_message() {
 
 # Defaults
 PICTURE_DIR="$HOME/Pictures/bing-wallpapers/"
+SSL=true
 
 # Option parsing
 while [[ $# -gt 0 ]]; do
@@ -51,7 +52,8 @@ while [[ $# -gt 0 ]]; do
             FORCE=true
             ;;
         -s|--ssl)
-            SSL=true
+#            SSL=true
+            SSL=$2
             ;;
         -q|--quiet)
             QUIET=true
