@@ -32,7 +32,7 @@ printf "Removing: ${PICTURE_DIR}today.jpg\n"
 printf "Removing: ${PICTURE_DIR}random.jpg\n\n"
 rm "${PICTURE_DIR}today.jpg" "${PICTURE_DIR}random.jpg"
 
-printf "Linking today's Bing wallpaper."
+printf "Linking today's Bing wallpaper.\n"
 printf "Picture: ${PICTURE_DIR}${filename}\n"
 printf "Ln link: ${PICTURE_DIR}today.jpg.\n\n"
 ln -s -f "${PICTURE_DIR}${filename}" "${PICTURE_DIR}today.jpg"
