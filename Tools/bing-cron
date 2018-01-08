@@ -1,2 +1,1 @@
-#min hour mday month wday command
-0/30 * * * * bash /usr/local/bin/tools/bing-random-pic.sh 
+*/30 * * * * bash /sne/home/ckuipers/git/bing-wallpaper/Tools/bing-random-pic.sh

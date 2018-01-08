@@ -1,0 +1,2 @@
+#min hour mday month wday command
+0/30 * * * * bash /usr/local/bin/tools/bing-random-pic.sh 
